@@ -1,0 +1,62 @@
+% This file was created by tikzplotlib v0.9.3.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+
+\begin{axis}[
+legend cell align={left},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black},
+log basis x={10},
+log basis y={10},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xlabel={Number of Datasets},
+xmin=0.853079366789105, xmax=28.1333729713019,
+xmode=log,
+xtick style={color=black},
+xtick={0.01,0.1,1,10,100,1000},
+xticklabels={\(\displaystyle {10^{-2}}\),\(\displaystyle {10^{-1}}\),\(\displaystyle {10^{0}}\),\(\displaystyle {10^{1}}\),\(\displaystyle {10^{2}}\),\(\displaystyle {10^{3}}\)},
+y grid style={white!69.0196078431373!black},
+ylabel={Mean Squared Error},
+ymin=0.00524258232453576, ymax=8.42614221766569,
+ymode=log,
+ytick style={color=black},
+ytick={0.0001,0.001,0.01,0.1,1,10,100},
+yticklabels={\(\displaystyle {10^{-4}}\),\(\displaystyle {10^{-3}}\),\(\displaystyle {10^{-2}}\),\(\displaystyle {10^{-1}}\),\(\displaystyle {10^{0}}\),\(\displaystyle {10^{1}}\),\(\displaystyle {10^{2}}\)}
+]
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}]
+table {%
+1 6.02417688799433
+2 0.131529322084658
+4 0.202121301497417
+9 0.126047074622561
+14 0.110616060200536
+24 0.121505848804641
+};
+\addlegendentry{$\sigma$-NN}
+\addplot [semithick, color1, mark=*, mark size=3, mark options={solid}]
+table {%
+1 0.0588315367704745
+2 0.0574881921384516
+4 0.0220523899719498
+9 0.0114505009404676
+14 0.0186463717876137
+24 0.043199118142607
+};
+\addlegendentry{$\Delta\sigma$-NN}
+\addplot [semithick, color2, mark=*, mark size=3, mark options={solid}]
+table {%
+1 4.40399104784122
+2 0.00906203948212855
+4 0.00832738792119387
+9 0.00733290955356825
+14 0.0127838057494152
+24 0.00734042948066104
+};
+\addlegendentry{SPD-NN}
+\end{axis}
+
+\end{tikzpicture}
