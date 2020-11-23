@@ -283,7 +283,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\min_{\theta,\,u_h} L_h(u_h) + \lambda\|F_h(f_\theta, u_h)\|_2^2
 		\end{equation*}
 		\begin{itemize}
-			\item May not satisfying physical constraint $F_h(f_\theta, u_h)=0$ accurately;
+			\item May not satisfy physical constraint $F_h(f_\theta, u_h)=0$ accurately;
 			\item Slow convergence for \textcolor{red}{stiff} problems;
 			\begin{figure}[hbt]
 				\includegraphics[width=0.6\textwidth]{figures/slowconvergence.png}
@@ -566,23 +566,6 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 
 
 \begin{frame}
-	\frametitle{Example}
-	
-	\begin{itemize}
-		%		\item A simple approach is to save part or all intermediate steps, and ``back-propagate''. This approach is expensive in both computation and memory\footnote{Ablin, Pierre, Gabriel Peyré, and Thomas Moreau. ``Super-efficiency of automatic differentiation for functions defined as a minimum.''}.
-		%		\item Nevertheless, the simple approach works in some scenarios where accuracy or cost is not an issue, e.g., automatic differetiation of soft-DTW and Sinkhorn distance. 
-		\item An efficient way is to apply the \textcolor{red}{implicit function theorem}. For our example, $F(x,y)=x^3-(y^3+y)=0$, treat $y$ as a function of $x$ and take the derivative on both sides
-		$$3x^2 - 3y(x)^2y'(x)-1=0\Rightarrow y'(x) = \frac{3x^2-1}{3y(x)^2}$$
-		The above gradient is \textcolor{red}{exact}.
-	\end{itemize}
-	\begin{center}
-		\textbf{Can we apply the same idea to inverse modeling?}
-	\end{center}
-	
-\end{frame}
-
-
-\begin{frame}
 	\frametitle{Physics Constrained Learning (PCL)}
 	$${\small    \min_{\theta}\; L_h(u_h) \quad \mathrm{s.t.}\;\; F_h(\theta, u_h) = 0}$$
 	\begin{itemize}
@@ -828,11 +811,11 @@ sol = Z\rhs
 		\item The distinguished feature compared to traditional forward simulation programs: \textcolor{red}{the model output is differentiable with respect to model parameters}!
 		\begin{minted}[escapeinside=||,fontsize=\small]{julia}
 	loss = sum((sol[idx] - observation[idx])^2)
-	g = gradients(loss, get\_collection())
+	g = gradients(loss, |\texttt{get\_collection}|())
 		\end{minted}
 		\item Optimization with a one-liner:
 		\begin{minted}[escapeinside=||,fontsize=\small]{julia}
-	BFGS!(sess, loss)
+			BFGS!(sess, loss)
 		\end{minted}	 
 	\end{itemize}
 	

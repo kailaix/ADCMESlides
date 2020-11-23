@@ -283,7 +283,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\min_{\theta,\,u_h} L_h(u_h) + \lambda\|F_h(f_\theta, u_h)\|_2^2
 		\end{equation*}
 		\begin{itemize}
-			\item May not satisfying physical constraint $F_h(f_\theta, u_h)=0$ accurately;
+			\item May not satisfy physical constraint $F_h(f_\theta, u_h)=0$ accurately;
 			\item Slow convergence for \textcolor{red}{stiff} problems;
 			\begin{figure}[hbt]
 				\includegraphics[width=0.6\textwidth]{figures/slowconvergence.png}
@@ -319,7 +319,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	
 	\begin{itemize}
 		\item We can now apply a gradient-based optimization method to (\ref{equ:opt}).
-		\item The key is to \textcolor{red}{calculate the gradient descent direction} $g^k$
+		\item The key is to \textcolor{red}{calculate a descent direction} $g^k$
 		$$\theta^{k+1} \gets \theta^k - \alpha g^k$$ 
 	\end{itemize}
 	
@@ -510,22 +510,6 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	
 \end{frame}
 
-
-\begin{frame}
-	\frametitle{Example}
-	
-	\begin{itemize}
-		%		\item A simple approach is to save part or all intermediate steps, and ``back-propagate''. This approach is expensive in both computation and memory\footnote{Ablin, Pierre, Gabriel Peyré, and Thomas Moreau. ``Super-efficiency of automatic differentiation for functions defined as a minimum.''}.
-		%		\item Nevertheless, the simple approach works in some scenarios where accuracy or cost is not an issue, e.g., automatic differetiation of soft-DTW and Sinkhorn distance. 
-		\item An efficient way is to apply the \textcolor{red}{implicit function theorem}. For our example, $F(x,y)=x^3-(y^3+y)=0$, treat $y$ as a function of $x$ and take the derivative on both sides
-		$$3x^2 - 3y(x)^2y'(x)-1=0\Rightarrow y'(x) = \frac{3x^2-1}{3y(x)^2}$$
-		The above gradient is \textcolor{red}{exact}.
-	\end{itemize}
-	\begin{center}
-		\textbf{Can we apply the same idea to inverse modeling?}
-	\end{center}
-	
-\end{frame}
 
 
 \begin{frame}
