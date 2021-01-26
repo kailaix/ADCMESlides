@@ -252,6 +252,29 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 
 \end{frame}
 
+
+
+\begin{frame}
+	\frametitle{Penalty Methods}
+	
+	\begin{itemize}
+		\item Parametrize $f$ with $f_\theta$ and incorporate the physical constraint as a \textcolor{red}{penalty term} (regularization, prior, \ldots) in the loss function.
+		\begin{equation*}
+			\min_{\theta,\,u_h} L_h(u_h) + \lambda\|F_h(f_\theta, u_h)\|_2^2
+		\end{equation*}
+		\begin{itemize}
+			\item May not satisfy physical constraint $F_h(f_\theta, u_h)=0$ accurately;
+			\item Slow convergence for \textcolor{red}{stiff} problems;
+			\begin{figure}[hbt]
+				\includegraphics[width=0.6\textwidth]{figures/slowconvergence.png}
+			\end{figure}
+			
+			
+			\item High dimensional optimization problem; both $\theta$ and $u_h$ are variables.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Machine Learning for Computational Engineering}
 	$$\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\;F_h(\textcolor{red}{NN_\theta}, u_h) = 0$$
