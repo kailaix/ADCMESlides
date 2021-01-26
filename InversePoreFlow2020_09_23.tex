@@ -275,18 +275,24 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\end{itemize}
 \end{frame}
 
+
 \begin{frame}
 	\frametitle{Machine Learning for Computational Engineering}
-	$$\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\;F_h(\textcolor{red}{NN_\theta}, u_h) = 0$$
-	\vspace{-0.5cm}
-	\begin{itemize}
-		\item Deep neural networks exhibit capability of approximating high dimensional and complicated functions. 
-		\item \textbf{Machine Learning for Computational Engineering}: \textcolor{red}{the unknown function is approximated by a deep neural network, and the physical constraints are enforced by numerical schemes}.
-		\item \textcolor{red}{Satisfy the physics to the largest extent}.
-	\end{itemize}
+	\begin{enumerate}
+		\item Approximate the unknown function with a \textcolor{red}{deep neural network}
+		$$\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\;{F_h(\textcolor{red}{NN_\theta}, u_h) = 0}$$	
+		\item Reduce the constrained optimization problem to an \textcolor{red}{unconstrained} optimization problem by solving the physical constraint numerically
+		$$\min_{\theta} \tilde L_h(\theta) := L_h(u_h(\theta))$$
+	\end{enumerate}
+	
+	
+	
+	\begin{center}
+		\textcolor{red}{Satisfy the physics to the largest extent}
+	\end{center}
 	\begin{figure}[hbt]
-  \includegraphics[width=0.75\textwidth]{figures/physics_based_machine_learning.png}
-\end{figure}
+		\includegraphics[width=0.75\textwidth]{figures/physics_based_machine_learning.png}
+	\end{figure}
 \end{frame}
 
 
