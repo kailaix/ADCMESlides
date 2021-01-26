@@ -486,7 +486,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	
 	\begin{minted}[escapeinside=||,fontsize=\small]{julia}
 |\textbf{\colorbox{green}{nu = squeeze(fc(gauss\_nodes(m, n, h),[20,20,20,1]))}}|
-K = nu*constant(|\underline{\texttt{compute\_fem\_laplace\_matrix}}|(m, n, h))
+K = constant(|\underline{\texttt{compute\_fem\_laplace\_matrix}}|(nu, m, n, h))
 B = constant(|\underline{\texttt{compute\_interaction\_matrix}}|(m, n, h))
 Z = [K -B'
     -B spdiag(zeros(size(B,1)))]
@@ -518,7 +518,7 @@ sol = Z\rhs
 		\item The distinguished feature compared to traditional forward simulation programs: \textcolor{red}{the model output is differentiable with respect to model parameters}!
 		\begin{minted}[escapeinside=||,fontsize=\small]{julia}
 loss = sum((sol[idx] - observation[idx])^2)
-g = gradients(loss, nu)
+g = gradients(loss, get_collections())
 		\end{minted}
 		\item Optimization with a one-liner:
 \begin{minted}[escapeinside=||,fontsize=\small]{julia}
