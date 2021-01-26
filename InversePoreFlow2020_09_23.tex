@@ -178,7 +178,7 @@
 
 \title[ML for Computational Engineering]{Machine Learning for Inverse Problems in Computational Engineering} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author[ADCME]{Kailai Xu, Weiqiang Zhu, and Eric Darve \\ \url{https://github.com/kailaix/ADCME.jl}} % Your name
+\author[ADCME]{Kailai Xu, and Eric Darve \\ \url{https://github.com/kailaix/ADCME.jl}} % Your name
 %\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 %{
 %%ICME, Stanford University \\ % Your institution for the title page
@@ -355,8 +355,12 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\frametitle{ADCME: Computational-Graph-based Numerical Simulation}
 	
 	\begin{figure}[hbt]
-		\includegraphics[width=1.0\textwidth]{figures/custom}
+		\includegraphics[width=0.9\textwidth]{figures/custom}
 	\end{figure}
+\vspace{-0.8cm}
+\begin{center}
+\url{https://github.com/kailaix/ADCME.jl}
+\end{center}
 \end{frame}
 
 
@@ -423,7 +427,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	
 	\begin{itemize}
 		\item The governing equation for the Stokes problem
-			$$\begin{aligned} -\textcolor{red}{\nu}\Delta \mathbf{u} + \nabla p &= \mathbf{f} & \text{ in } \Omega \\ \nabla \cdot \mathbf{u} &= 0 & \text{ in } \Omega \\ \mathbf{u} &= \mathbf{0} & \text{ on } \partial \Omega \end{aligned}$$
+			$$\begin{aligned} -\nabla \cdot (\textcolor{red}{\nu(x)}\nabla \mathbf{u}) + \nabla p &= \mathbf{f} & \text{ in } \Omega \\ \nabla \cdot \mathbf{u} &= 0 & \text{ in } \Omega \\ \mathbf{u} &= \mathbf{0} & \text{ on } \partial \Omega \end{aligned}$$
 	\end{itemize}
 
 
@@ -432,7 +436,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\item The weak form is given by 
 	\begin{equation*}
 		\begin{aligned}
-			(\textcolor{red}{\nu} \nabla u, \nabla v) &- (p, \nabla \cdot v) &&= (f, v)\\
+			(\textcolor{red}{\nu(x)} \nabla u, \nabla v) &- (p, \nabla \cdot v) &&= (f, v)\\
 			(\nabla \cdot u, q) & &&= 0
 		\end{aligned}
 	\end{equation*}
@@ -450,7 +454,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\frametitle{Inverse Modeling of the Stokes Equation}
 	
 	\begin{minted}[escapeinside=||,fontsize=\small]{julia}
-|\textbf{\colorbox{green}{nu = \texttt{Variable(0.5)}}}|
+|\textbf{\colorbox{green}{nu = squeeze(fc(gauss\_nodes(m, n, h),[20,20,20,1]))}}|
 K = nu*constant(|\underline{\texttt{compute\_fem\_laplace\_matrix}}|(m, n, h))
 B = constant(|\underline{\texttt{compute\_interaction\_matrix}}|(m, n, h))
 Z = [K -B'
@@ -495,6 +499,10 @@ BFGS!(sess, loss)
 	\centering
 	\includegraphics[width=0.8\textwidth]{figures/lego}
 \end{figure}
+\vspace{-0.8cm}
+\begin{center}
+	\url{https://github.com/kailaix/AdFem.jl}
+\end{center}
 	
 \end{frame}
 
@@ -585,8 +593,8 @@ BFGS!(sess, loss)
 	\end{itemize}		
 	\begin{figure}[hbt]	
 		\centering
-		\includegraphics[width=0.5\textwidth]{../ip}~
-		\includegraphics[width=0.3\textwidth]{../cell}
+		\includegraphics[width=0.5\textwidth]{figures/ip}~
+		\includegraphics[width=0.3\textwidth]{figures/cell}
 	\end{figure}
 	
 \end{frame}
@@ -602,7 +610,7 @@ BFGS!(sess, loss)
 		\end{equation*}
 	\end{itemize}
 	\begin{figure}[hbt]
-		\includegraphics[width=1.0\textwidth]{../visco1}
+		\includegraphics[width=1.0\textwidth]{figures/visco1}
 	\end{figure}
 	
 \end{frame}
@@ -610,7 +618,7 @@ BFGS!(sess, loss)
 \begin{frame}
 	\frametitle{Viscoelasticity}
 	\begin{figure}[hbt]
-		\includegraphics[width=0.7\textwidth]{../visco2}
+		\includegraphics[width=0.7\textwidth]{figures/visco2}
 	\end{figure}
 	
 \end{frame}
