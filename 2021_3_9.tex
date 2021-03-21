@@ -1,0 +1,540 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[usenames,dvipsnames]{beamer}
+\usepackage{animate}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{extarrows}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{minted}
+
+\newcommand{\ChoL}{\mathsf{L}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\bxi}{\bm{\xi}}
+\newcommand{\bmu}{\bm{\mu}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bM}{\mathbf{M}}
+
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bw}{\mathbf{w}}
+
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bs}{\mathbf{s}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\bt}[0]{\bm{\theta}}
+\newcommand{\bc}{\mathbf{c}}
+\newcommand{\bzero}{\mathbf{0}}
+\renewcommand{\bf}{\mathbf{f}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bv}[0]{\mathbf{v}}
+\usepackage{minted}
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{soul}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+%
+%\usepackage{graphicx} % Allows including images
+%\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%
+%
+%\usepackage{amsthm}
+%
+%\usepackage{todonotes}
+%\usepackage{floatrow}
+%
+%\usepackage{pgfplots,algorithmic,algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+%\usepackage[toc,page]{appendix}
+%\usepackage{float}
+%\usepackage{booktabs}
+%\usepackage{bm}
+%
+%\theoremstyle{definition}
+%
+\newcommand{\RR}[0]{\mathbb{R}}
+%
+%\newcommand{\bx}{\mathbf{x}}
+%\newcommand{\ii}{\mathrm{i}}
+%\newcommand{\bxi}{\bm{\xi}}
+%\newcommand{\bmu}{\bm{\mu}}
+%\newcommand{\bb}{\mathbf{b}}
+%\newcommand{\bA}{\mathbf{A}}
+%\newcommand{\bJ}{\mathbf{J}}
+%\newcommand{\bB}{\mathbf{B}}
+%\newcommand{\bM}{\mathbf{M}}
+%\newcommand{\bF}{\mathbf{F}}
+%
+%\newcommand{\by}{\mathbf{y}}
+%\newcommand{\bw}{\mathbf{w}}
+%\newcommand{\bn}{\mathbf{n}}
+%
+%\newcommand{\bX}{\mathbf{X}}
+%\newcommand{\bY}{\mathbf{Y}}
+%\newcommand{\bs}{\mathbf{s}}
+%\newcommand{\sign}{\mathrm{sign}}
+%\newcommand{\bt}[0]{\bm{\theta}}
+%\newcommand{\bc}{\mathbf{c}}
+%\newcommand{\bzero}{\mathbf{0}}
+%\renewcommand{\bf}{\mathbf{f}}
+%\newcommand{\bu}{\mathbf{u}}
+%\newcommand{\bv}[0]{\mathbf{v}}
+
+\AtBeginSection[]
+{
+   \begin{frame}
+       \frametitle{Outline}
+       \tableofcontents[currentsection]
+   \end{frame}
+}
+
+%----------------------------------------------------------------------------------------
+%    TITLE PAGE
+%----------------------------------------------------------------------------------------
+\usepackage{bm}
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+\title[Distributed ML for Scientific Computing]{ADCME MPI: Distributed Machine Learning for Computational Engineering} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author[ADCME-MPI]{Kailai Xu and Eric Darve \\ \url{https://github.com/kailaix/ADCME.jl}} % Your name
+%\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+%{
+%%ICME, Stanford University \\ % Your institution for the title page
+%%\medskip
+%%\textit{kailaix@stanford.edu}\quad \textit{darve@stanford.edu} % Your email address
+%}
+\date{}% Date, can be changed to a custom date
+% Mathematics of PDEs
+
+
+\begin{document}
+
+\usebackgroundtemplate{%
+\begin{picture}(0,250)
+\centering
+	{{\includegraphics[width=1.0\paperwidth]{figures/background}}}
+\end{picture}
+  } 
+%\usebackgroundtemplate{%
+%  \includegraphics[width=\paperwidth,height=\paperheight]{figures/back}} 
+\begin{frame}
+
+\titlepage % Print the title page as the first slide
+
+%dfa
+\end{frame}
+\usebackgroundtemplate{}
+
+\section{Inverse Modeling}
+
+
+
+
+\begin{frame}
+	\frametitle{Inverse Modeling}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.0\textwidth]{figures/inverse3}
+	\end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Inverse Modeling}
+	We can formulate inverse modeling as a PDE-constrained optimization problem 
+	\begin{equation*}
+		\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\; F_h(\theta, u_h) = 0
+	\end{equation*}
+	\begin{itemize}
+		\item The \textcolor{red}{loss function} $L_h$ measures the discrepancy between the prediction $u_h$ and the observation $u_{\mathrm{obs}}$, e.g., $L_h(u_h) = \|u_h - u_{\mathrm{obs}}\|_2^2$. 
+		\item $\theta$ is the \textcolor{red}{model parameter} to be calibrated. 
+		\item The \textcolor{red}{physics constraints} $F_h(\theta, u_h)=0$ are described by a system of partial differential equations or differential algebraic equations (DAEs); e.g., 
+		$$F_h(\theta, u_h) = \mathbf{A}(\theta) u_h - f_h = 0$$
+	\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{Function Inverse Problem}
+	
+	\begin{equation*}
+		\min_{\textcolor{red}{f}} L_h(u_h) \quad \mathrm{s.t.}\; F_h(\textcolor{red}{f}, u_h) = 0
+	\end{equation*}
+	
+	What if the unknown is a \textcolor{red}{function} instead of a set of parameters?
+\begin{itemize}
+	\item Koopman operator in dynamical systems.
+	\item Constitutive relations in solid mechanics. 
+	\item Turbulent closure relations in fluid mechanics.
+	\item ...
+\end{itemize}
+
+The candidate solution space is \textcolor{red}{infinite dimensional}.
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Machine Learning for Computational Engineering}
+	$$\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\;\boxed{F_h(\textcolor{red}{NN_\theta}, u_h) = 0} \leftarrow \mbox{Solved numerically}$$
+	\vspace{-0.5cm}
+	\begin{enumerate}
+		\item Use a deep neural network to approximate the (high dimensional) unknown function;
+		\item Solve $u_h$ from the physical constraint using a numerical PDE solver;
+		\item Apply an unconstrained optimizer to the reduced problem
+		$$\min_{\theta} L_h(\textcolor{red}{u_h(\theta)})$$
+	\end{enumerate}
+\vspace{-0.3cm}
+	\begin{figure}[hbt]
+  \includegraphics[width=0.75\textwidth]{figures/physics_based_machine_learning.png}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Gradient Based Optimization}
+	\begin{equation*}
+		\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\; F_h(\theta, u_h) = 0 \qquad\Leftrightarrow\qquad \min_{\theta} L_h({u_h(\theta)})
+		\end{equation*}
+	\vspace{-0.5cm}
+	\begin{itemize}
+		 \item We can now apply a gradient-based optimization method if we can \textcolor{red}{calculate a descent direction} $g^k$
+		$$\theta^{k+1} \gets \theta^k - \alpha g^k$$ 
+	\end{itemize}
+
+	\begin{figure}[hbt]
+	\centering
+  \includegraphics[width=0.6\textwidth]{figures/im.pdf}
+\end{figure}
+
+\end{frame}
+
+
+
+\section{Automatic Differentiation}
+
+
+\begin{frame}
+	\frametitle{Automatic Differentiation}
+	The fact that bridges the \textcolor{red}{technical} gap between machine learning and inverse modeling:
+	\begin{itemize}
+		\item Deep learning (and many other machine learning techniques) and numerical schemes share the same computational model: composition of individual operators. 
+	\end{itemize}
+	
+	
+	\begin{minipage}[t]{0.4\textwidth}
+		
+		\
+		
+		
+		
+		\begin{center}
+			\textcolor{red}{Mathematical Fact}
+			
+			\
+			
+			Back-propagation 
+			
+			$||$
+			
+			Reverse-mode
+			
+			Automatic Differentiation 
+			
+			$||$
+			
+			Discrete 
+			
+			Adjoint-State Method
+		\end{center}
+	\end{minipage}~
+	\begin{minipage}[t]{0.6\textwidth}
+		\begin{figure}[hbt]
+			\includegraphics[width=0.8\textwidth]{figures/compare-NN-PDE.png}
+		\end{figure}
+	\end{minipage}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Computational Graph for Numerical Schemes}
+	
+	\begin{itemize}
+		\item To leverage automatic differentiation for inverse modeling, we need to express the numerical schemes in the ``AD language'': computational graph. 
+		\item No matter how complicated a numerical scheme is, it can be decomposed into a collection of operators that are interlinked via state variable dependencies. 
+	\end{itemize}
+	
+	\begin{figure}[hbt]
+		\includegraphics[width=1.0\textwidth]{figures/cgnum}
+	\end{figure}
+	
+	
+	
+\end{frame}
+
+
+
+
+\begin{frame}
+	\frametitle{ADCME: Computational-Graph-based Numerical Simulation}
+	
+	\begin{figure}[hbt]
+		\includegraphics[width=1.0\textwidth]{figures/custom}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{How ADCME works}
+	\begin{itemize}
+		\item ADCME translates your \textcolor{red}{high level} numerical simulation codes to computational graph and then the computations are delegated to a heterogeneous task-based parallel computing environment through TensorFlow runtime. 
+	\end{itemize}
+	\begin{figure}[hbt]
+		\includegraphics[width=1.0\textwidth]{figures/routine2.png}
+	\end{figure}
+\end{frame}
+
+
+
+\section{Distributed Computing for Computational Engineering}
+
+
+\begin{frame}
+\frametitle{Common Distributed Computing Patterns in DL}
+
+$$L(\theta) = \sum_{i=1}^N (NN(x_i; \theta) - y_i)^2$$
+
+\begin{figure}
+	\centering 
+		\includegraphics[width=0.48\textwidth]{figures/mpi/data_parallel}~
+	\includegraphics[width=0.48\textwidth]{figures/mpi/parameter_server}
+\end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Distributed Computing in ML for Computational Engineering}
+\begin{minipage}{.5\textwidth}
+	Consider a time-dependent PDE, where the state variable 
+	$$u_k = [u_k^{(1)}\ u_k^{(2)}\ \cdots u_k^{(P)}]$$
+	is stored on $P$ machines. Each time step requires a distributed numerical solver. 
+	\begin{equation*}
+\begin{aligned}
+\min_{\theta} &\; L(u_n)\\ 
+\text{s.t.} &\; A(\theta)u_2 = h(u_1; \theta) + g\\ 
+&\; A(\theta)u_3 = h(u_2; \theta) + g\\
+&\;\vdots \\ 
+&\; A(\theta)u_n = h(u_{n-1}; \theta) + g
+\end{aligned}
+	\end{equation*}
+\end{minipage}~
+\begin{minipage}{.5\textwidth}
+	\includegraphics[width=0.8\textwidth]{figures/mpi/ourmodel}
+\end{minipage}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{ADCME-MPI}
+
+ADCME-MPI abstracts distributed computing as a node in the computational graph. The ADCME-MPI model is \textbf{transparent}.
+\begin{itemize}
+\item ADCME takes responsibility for MPI communication and gradient back-propagation across clusters;
+\item users can adapt their single processor codes to a distributed computing environment with little efforts.
+\end{itemize}
+ 
+
+
+\begin{figure}
+	\centering 
+	\includegraphics[width=0.49\textwidth]{figures/mpi/intro1}
+	\includegraphics[width=0.49\textwidth]{figures/mpi/intro2}
+\end{figure}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example}
+
+\begin{minipage}{.5\textwidth}
+	Consider a simple function:
+	$$L(\theta) = 1 + \theta + \theta^2 + \theta^3$$
+		\includegraphics[width=1.0\textwidth]{figures/mpi/simple}
+\end{minipage}~
+\begin{minipage}{.5\textwidth}
+	\begin{minted}{julia}
+using ADCME
+mpi_init() # initialize MPI 
+theta0 = placeholder(1.0)
+theta = mpi_bcast(theta0)
+l = theta^mpi_rank()
+L = mpi_sum(l)
+g = gradients(L, theta0)
+# initialize a Session
+sess = Session(); init(sess)
+L_value = run(sess, L) 
+g_value = run(sess, g)
+mpi_finalize() # finalize MPI 
+	\end{minted}
+\end{minipage}
+
+
+\end{frame}
+
+
+\begin{frame}{Distributed Optimization}
+	
+	In the ADCME-MPI, we can convert a serial optimizer to a distributed optimizer by inserting some communication codes:
+\begin{figure}
+\centering 
+\includegraphics[width=0.8\textwidth]{figures/mpi/optimization}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+	\begin{minipage}[c]{.52\textwidth}
+		\begin{equation*}
+			\begin{aligned}
+				\min_{\theta}&\; J(\theta):=\sum_{i\in \mathcal{I}} \left( u(\bx_i) - u_i \right)^2\\ 
+				\text{s.t.} &\; \nabla \cdot (\textcolor{red}{NN_\theta(\bx)} \nabla u(\bx))  = f(\bx),\ \bx \in \Omega \\ 
+				&\; u(\bx) = 0,\  \bx \in \partial \Omega
+			\end{aligned}
+		\end{equation*}
+	\end{minipage}~
+	\begin{minipage}[c]{.48\textwidth}
+		\includegraphics[width=1.0\textwidth]{figures/mpi/poisson}
+	\end{minipage}
+	
+	
+\end{frame}
+\begin{frame}
+	\begin{figure}[htpb]
+		\centering 		
+		\includegraphics[width=1.0\textwidth]{figures/mpi/overhead_adcme}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Reference}
+
+For more technical details, benchmarks, or use cases:
+\begin{itemize}
+\item AAAI Conference Paper: \textit{ADCME MPI: Distributed Machine Learning
+for Computational Engineering}
+\item Full paper: \textit{Distributed Machine Learning for Computational Engineering using MPI
+}
+
+ \url{https://arxiv.org/pdf/2011.01349.pdf}
+\item Software documentation: \url{https://kailaix.github.io/ADCME.jl/dev/}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{A General Approach to Inverse Modeling}
+	\begin{figure}[hbt]
+		\includegraphics[width=1.0\textwidth]{figures/summary.png}
+	\end{figure}
+\end{frame}
+
+
+
+%}
+%\usebackgroundtemplate{}
+%----------------------------------------------------------------------------------------
+%    PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+
+
+
+\end{document} 
