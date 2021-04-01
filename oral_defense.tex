@@ -1032,13 +1032,17 @@ $$a(x) = 1-0.9\exp\left( -\frac{(x-{\color{red}\mu})^2}{2{\sigma}^2} \right)$$
 \begin{frame}{Optimal Transport}
 	\begin{itemize}
 \item Solve the transport matrix from a linear programming problem 
-\begin{equation}
-	\begin{aligned}
-		\min_{p_{ij}} &\; W(\mathbf{p}; \mathbf{x}, \by) = \sum_{i=1}^n \sum_{j=1}^m p_{ij} \underline{c}_{ij} \\
-		\mathrm{s.t.}\;\; & \sum_{j=1}^m p_{ij} = \frac{1}{n},\;\; \sum_{i=1}^n p_{ij} = \frac{1}{m},\;\; 0\leq p_{ij}\leq 1
-	\end{aligned}
-\end{equation}
-
+\begin{minipage}{0.7\textwidth}
+	\begin{equation*}
+		\begin{aligned}
+			\min_{p_{ij}} &\; W(\mathbf{p}; \mathbf{x}, \by) = \sum_{i=1}^n \sum_{j=1}^m p_{ij} \underline{c}_{ij} \\
+			\mathrm{s.t.}\;\; & \sum_{j=1}^m p_{ij} = \frac{1}{n},\;\; \sum_{i=1}^n p_{ij} = \frac{1}{m},\;\; 0\leq p_{ij}\leq 1
+		\end{aligned}
+	\end{equation*}
+\end{minipage}~
+\begin{minipage}{0.3\textwidth}
+	\includegraphics[width=0.8\textwidth]{figures/thesis/optimal}
+\end{minipage}
 \item Discrete Wasserstein distance between two sets of samples:
 
 $$	D(\mathbf{x}, \by) = W(\mathbf{p}^*; \mathbf{x}, \by) = \hspace{-4pt} \sum_{1\leq i\leq n, 1\leq j\leq m} \hspace{-4pt} p^*_{ij} \|x_i-y_j\|_1$$
@@ -1057,7 +1061,7 @@ $$	D(\mathbf{x}, \by) = W(\mathbf{p}^*; \mathbf{x}, \by) = \hspace{-4pt} \sum_{1
 \end{theorem}
 
 \begin{itemize}
-\item We have a ``deterministic discriminator''. 
+\item We have a ``\textcolor{red}{handpicked discriminator}''. 
 \item Numerical implementation is very similar to OptNet (Amos, Brandon, and J. Zico Kolter, PMLR 2017):
 \begin{itemize}
 \item The forward computation constitutes solving an optimization problem. 
