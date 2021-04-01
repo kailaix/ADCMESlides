@@ -182,7 +182,7 @@
 \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
 \newcommand*{\danger}{\TakeFourierOrnament{66}}
 
-\title[Kailai Xu]{Machine Learning for Inverse Problems in Computational Engineering} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Kailai Xu]{Machine Learning for Computational Engineering} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author[Kailai Xu]{Kailai Xu \\ Stanford University} % Your name
 
@@ -304,7 +304,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\vspace{-0.5cm}
 	\begin{enumerate}
 		\item Use a deep neural network to approximate the (high dimensional) unknown function;
-		\item Solve $u_h$ from the physical constraint using a numerical PDE solver;
+		\item Solve $u_h$ from the physical constraint using a \textcolor{red}{numerical PDE solver};
 		\item Apply an unconstrained optimizer to the reduced problem
 		$$\min_{\theta} L_h(\textcolor{red}{u_h(\theta)})$$
 	\end{enumerate}
@@ -615,6 +615,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 				\text{Penalty Method}: &&\ 
 			\min_{\theta, u_h}\tilde L_h(\theta, u_h) &= \|u_h-u_0\|^2_2 + \lambda \|Au_h -\theta y\|_2^2
 	\end{align*}
+\vspace{-0.5cm}
 \begin{theorem}
 	The condition number of $\mathbf{A}_\lambda$ is 
 	\begin{equation*}
@@ -802,22 +803,22 @@ $$v = \Phi_m(\Phi_{m-1}(\cdots (\Phi_1(z))))$$
 \begin{frame}{Numerical Benchmark}
 \begin{itemize}
 \item We consider the heat equation in $\Omega = [0,1]^2$
-\begin{equation}\label{equ:second-order-ex2}
+\begin{equation*}
 	\begin{aligned}
 		\frac{\partial u}{\partial t} &= \nabla \cdot (\kappa(x, y) \nabla u))+  f(x, y) & x\in \Omega\\ 
 		u(x,y,0) &= x(1-x)y^2(1-y)^2 & (x,y)\in \Omega\\
 		u(x,y,t) &= 0 & (x,y)\in  \partial \Omega
 	\end{aligned}
-\end{equation}
+\end{equation*}
 
 \item The diffusivity coefficient $\kappa$ and exact solution $u$ are given by 
 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	\kappa(x,y) &= 2x^2 - 1.05x^4 + x^6 +xy+y^2\\ 
 	u(x,y,t) &= x(1-x)y^2(1-y)^2 e^{-t}
 \end{aligned}
-\end{equation}
+\end{equation*}
 
 \item We learn a DNN approximation to $\kappa$ using full-field observations of $u$
 
@@ -1054,6 +1055,14 @@ $$	D(\mathbf{x}, \by) = W(\mathbf{p}^*; \mathbf{x}, \by) = \hspace{-4pt} \sum_{1
 		\frac{\partial W(\mathbf{p}^*([\uc_{ij}]))}{\partial \uc_{ij}} = p^*_{ij}
 	\end{equation*}
 \end{theorem}
+
+\begin{itemize}
+\item We have a ``deterministic discriminator''. 
+\item Numerical implementation is very similar to OptNet (Amos, Brandon, and J. Zico Kolter, PMLR 2017):
+\begin{itemize}
+\item The forward computation constitutes solving an optimization problem. 
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 
