@@ -1006,17 +1006,21 @@ Here $\theta = (\kappa, \tau, \sigma)$, $w = W_t$, and $u = r_t$.
 
 \begin{frame}{Adversarial Inverse Modeling}
 	\begin{itemize}
-\item Find the \textbf{Nash equilibrium} by solving a min-max problem 
-$$\min_\eta \max_\xi\; V(D_\xi, G_\eta)$$
-Here $V$ is the reward to the discriminator $D$ for distinguishing  generated and observed samples.
-\item Inspired by generative adversarial nets (GAN): iteratively minimizing discriminator and generator loss functions
+\item Inspired by generative adversarial nets (GAN): alternatively minimizing discriminator and generator loss functions
 \begin{itemize}
-\item Example: Kullback-Leibler (KL) GAN
+\item Kullback-Leibler (KL) GAN
 \begin{equation*}
 	\begin{aligned}
 		L^G(\{\hat u_i\}; {\color{red}\eta}) =&  \frac{1}{n}\sum_{i=1}^n \log\frac{ 1-D_{\xi}(\hat  u_i({\color{red}\eta}))}{D_{\xi}(\hat  u_i({\color{red}\eta}))} \\
 		L^D(\{ u_i\}, \{\hat u_i\}; {\color{red}\xi}) =& -\frac{1}{n}\sum_{i=1}^n \left( \log D_{\color{red}\xi}(\hat  u_i) + \log(1-D_{\color{red}\xi}( u_i)) \right)
 	\end{aligned} 
+\end{equation*}
+\item Wasserstein GAN
+\begin{equation*}
+\begin{aligned}
+	L^G(\{\hat u_i\}; {\color{red}\eta}) =& \frac{1}{n}\sum_{i=1}^n D_{\xi}(\hat  u_i({\color{red}\eta})) \\
+	L^D(\{ u_i\}, \{\hat u_i\}; \xi) =& -\frac{1}{n}\sum_{i=1}^n D_{\xi}( u_i)
+\end{aligned}
 \end{equation*}
 \end{itemize}  
 	\end{itemize}
@@ -1027,7 +1031,7 @@ Here $V$ is the reward to the discriminator $D$ for distinguishing  generated an
 \begin{frame}{Numerical Benchmarks}
 
 \begin{itemize}
-\item We consider a Poisson equation 
+\item We consider a Poisson's equation 
 $$\begin{cases}
 	-\nabla \cdot (a(x)\nabla u(x)) = 1 & x\in(0,1)\\
 	u(0) = u(1) = 0 & \mbox{otherwise}
