@@ -831,9 +831,9 @@ $$\kappa(x,y) \approx \text{NN}_\theta(x, y)$$
 	\begin{itemize}
 		
 		\item The optimization problem is given by 
-		\begin{equation}
+		\begin{equation*}
 			\min_\theta\; L(\theta) = \sum_n\sum_{i,j} \left(\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} - F_{i,j}( u^{n+1}; \theta) -  f^{n+1}_{i,j}\right)^2 
-		\end{equation}
+		\end{equation*}
 		
 		Here $F_{i,j}(u^{n+1}; \theta)$ is the 4-point finite difference approximation to the Laplacian $\nabla\cdot (\text{NN}_\theta \nabla u)$.
 		
