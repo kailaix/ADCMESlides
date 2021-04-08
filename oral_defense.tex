@@ -131,6 +131,10 @@
 %\usepackage{pgfplots,algorithmic,algorithm}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
 %\usepackage[toc,page]{appendix}
 %\usepackage{float}
 %\usepackage{booktabs}
@@ -276,26 +280,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 \end{frame}
 
 
-\begin{frame}
-	\frametitle{Penalty Methods}
-	
-	\begin{itemize}
-		\item Parametrize $f$ with $f_\theta$ and incorporate the physical constraint as a \textcolor{red}{penalty term} (regularization, prior, \ldots) in the loss function.
-		\begin{equation*}
-	\min_{\theta,\,u_h} L_h(u_h) + \lambda\|F_h(f_\theta, u_h)\|_2^2
-		\end{equation*}
-		\begin{itemize}
-			\item May not satisfy physical constraint $F_h(f_\theta, u_h)=0$ accurately;
-			\item Slow convergence for \textcolor{red}{stiff} problems;
-			\begin{figure}[hbt]
-				\includegraphics[width=0.6\textwidth]{figures/slowconvergence.png}
-			\end{figure}
-			
-			
-			\item High dimensional optimization problem; both $\theta$ and $u_h$ are variables.
-		\end{itemize}
-	\end{itemize}
-\end{frame}
+
 
 
 \begin{frame}
@@ -327,15 +312,15 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	
 	\begin{figure}[hbt]
 	\centering
-  \includegraphics[width=0.6\textwidth]{figures/im.pdf}
+  \includegraphics[width=0.6\textwidth]{figures/thesis/workflow.pdf}
 \end{figure}
 
 \end{frame}
 
 
-\begin{frame}{Research Question}
+\begin{frame}{Contributions}
 	
-	\textbf{Overall}
+	\textbf{Goal}
 	
 	\vspace{0.2cm}
 	
@@ -344,38 +329,39 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\end{quote}
 
 	
-	
-	Specifically, I discuss my contributions on:	
-\begin{enumerate}
-\item how to reconcile gradient calculations in both numerical PDE solvers and deep neural networks using \textcolor{red}{automatic differentiation};
-\item how to calculate gradients for \textcolor{red}{implicit and/or iterative operators} in sophisticated numerical solvers;
-\item how to \textcolor{red}{accelerate convergence and improve accuracy} with \textcolor{red}{Hessian information};
-\item how to solve \textcolor{red}{stochastic} inverse problems. 
-\end{enumerate}
+	\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figures/thesis/outline.pdf}
+\end{figure}
 \end{frame}
 
 
 
-\section{Automatic Differentiation}
-
-\begin{frame}{Motivation}
-
-\textbf{Question}
-
-\
-
-\begin{quote}
-	How deep neural networks communicate gradients with numerical PDE solvers?
-\end{quote}
-
+\section{Software Implementation}
+\begin{frame}
+	\frametitle{Ecosystem for Inverse Modeling}
+	
+	
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.9\textwidth]{figures/thesis/eco}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
+	\frametitle{Applications}
+	
+	
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.9\textwidth]{figures/thesis/pub}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
 	\frametitle{Automatic Differentiation}
-	The fact that bridges the \textcolor{red}{technical} gap between machine learning and inverse modeling:
-	\begin{itemize}
-		\item Deep learning (and many other machine learning techniques) and numerical schemes share the same computational model: composition of individual operators. 
-	\end{itemize}
+	Bridging the technical gap between deep learning and inverse modeling: 
 	
 	
 	\begin{minipage}[t]{0.4\textwidth}
@@ -596,6 +582,24 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	
 \end{frame}
 
+\begin{frame}
+	\frametitle{Penalty Methods}
+	\begin{equation*}
+		\min_{\textcolor{red}{f}} L_h(u_h) \quad \mathrm{s.t.}\; F_h(\textcolor{red}{f}, u_h) = 0
+	\end{equation*}
+	\begin{itemize}
+		\item \textcolor{red}{Penalty Method}: parametrize $f$ with $f_\theta$ (DNNs, linear finite element basis, radial basis functions, etc.) and incorporate the physical constraint as a \textcolor{red}{penalty term} (regularization, prior, \ldots) in the loss function.
+		\begin{equation*}
+			\min_{\theta,\,u_h} L_h(u_h) + \lambda\|F_h(f_\theta, u_h)\|_2^2
+		\end{equation*}
+		\begin{itemize}
+			\item[+] Easy to implement (no need for differentiating numerical solvers) 
+			\item[$-$] May not satisfy physical constraint $F_h(f_\theta, u_h)=0$ accurately;
+			
+			\item[$-$] High dimensional optimization problem; both $\theta$ and $u_h$ are variables.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
 
 
@@ -604,7 +608,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\frametitle{Physics Constrained Learning for Stiff Problems}
 	
 	\begin{itemize}
-		\item For stiff problems, better to resolve physics using PCL.
+		\item \textcolor{red}{PCL is superior for stiff problems.}
 		\item Consider a model problem 
 		\begin{gather*}
 			\min_{\theta} \|u-u_0\|^2_2 \qquad \text{s.t.} \;\; Au = \theta y
@@ -645,11 +649,9 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 \begin{itemize}
 \item Implicit and iterative operators are ubiquitous in numerical PDE solvers. These operators are insufficiently treated in deep learning software and frameworks.
 
-\item Penalty methods suffer from slow convergence for stiff problems. 
+\item PCL helps you calculate gradients of implicit/iterative operators efficiently. 
 
-\item First order physics constrained learning helps you calculate gradients of implicit/iterative operators efficiently. 
-
-\item PCL leads to faster convergence and better accuracy compared to penalty methods.
+\item PCL leads to faster convergence and better accuracy compared to penalty methods for stiff problems.
 \end{itemize}
 \end{frame}
 
@@ -657,44 +659,42 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 
 \begin{frame}{Motivation}
 
-\begin{itemize}
-	\item First order methods and quasi-Newton methods are workhorse of physics informed machine learning 
+
 	
-	\begin{itemize}
-		\item First order methods: stochastic gradient descent (SGD) and ADAM 
-		%Slow convergence with long plateaus
-		\item Quasi-Newton methods: BFGS and L-BFGS 
-		% early termination 
-	\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{figures/thesis/optimization.png}
+\end{figure}
 
-	\item Second order methods, such as trust region methods, are desirable for accelerating convergence and improving accuracy. 
-	\begin{itemize}
-		\item It requires us to calculate the curvature information (Hessians).
-	\end{itemize}
-\end{itemize}
 
-\
 
-\textbf{Goal}
 
-\vspace{0.2cm} 
+\end{frame}
 
+\begin{frame}{Overview}
+		\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/thesis/losses2_dynamic.pdf}
+	\end{figure}
+	
+	\vspace{-0.4cm} 
+	
+	\textbf{Goal}
+	
+	\vspace{0.2cm} 
+	
 \begin{quote}
 	Accelerate convergence and improve accuracy with Hessian information
 \end{quote}
 
-\end{frame}
+\textbf{Challenge}
 
+\vspace{0.2cm} 
 
-\begin{frame}{Optimization Algorithms}
-	
-	
-	\begin{figure}
-		\centering
-		\includegraphics[width=1.0\textwidth]{figures/thesis/optimization.png}
-	\end{figure}
-	
-	
+\begin{quote}
+Calculate Hessians for coupled systems of PDEs and DNNs
+\end{quote}
+
 \end{frame}
 
 \begin{frame}{Trust Region vs. Line Search}
@@ -805,7 +805,7 @@ $$v = \Phi_m(\Phi_{m-1}(\cdots (\Phi_1(z))))$$
 \item We consider the heat equation in $\Omega = [0,1]^2$
 \begin{equation*}
 	\begin{aligned}
-		\frac{\partial u}{\partial t} &= \nabla \cdot (\kappa(x, y) \nabla u))+  f(x, y) & x\in \Omega\\ 
+		\frac{\partial u}{\partial t} &= \nabla \cdot (\textcolor{red}{\kappa(x, y)} \nabla u))+  f(x, y) & x\in \Omega\\ 
 		u(x,y,0) &= x(1-x)y^2(1-y)^2 & (x,y)\in \Omega\\
 		u(x,y,t) &= 0 & (x,y)\in  \partial \Omega
 	\end{aligned}
@@ -848,6 +848,8 @@ $$\kappa(x,y) \approx \text{NN}_\theta(x, y)$$
 \end{frame}
 
 \begin{frame}{Effect of PDEs}
+	$$\text{NN}_\theta \rightarrow \text{PDE Solver}  \rightarrow \text{Loss Function}$$
+	\vspace{-0.5cm}
 	\begin{itemize}
 \item Consider the loss function excluding the effects of PDEs 
 $$    l(\theta) = \sum_{i,j} (\text{NN}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}, y_{i,j}))^2 $$
@@ -914,9 +916,10 @@ $$    l(\theta) = \sum_{i,j} (\text{NN}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j
 \end{frame}
 
 
-\begin{frame}{Effect of Widths and Depths}
+\begin{frame}{Effect of Widths and Depths: conjecture}
 \begin{itemize}
 \item Implications for overparametrization: \textbf{the minimizer lies on a relatively higher dimensional manifold of the parameter space}.
+\item Conjecture: overparameterization makes the optimization easier. 
 \end{itemize}
 
 	\begin{figure}[htbp]
@@ -938,6 +941,14 @@ $$    l(\theta) = \sum_{i,j} (\text{NN}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j
 \section{Generative Neural Networks for Stochastic Inverse Problems}
 
 \begin{frame}{Motivation}
+		\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.6\textwidth]{figures/thesis/outline4}
+	\end{figure}
+\begin{center}
+	\rule{8cm}{0.4pt}
+\end{center}
+
 		\begin{equation*}
 		\min_{\textcolor{red}{f}} L_h(u_h) \quad \mathrm{s.t.}\; F_h(\textcolor{red}{f}, u_h) = 0
 	\end{equation*}
@@ -1070,7 +1081,7 @@ $$	D(\mathbf{x}, \by) = W(\mathbf{p}^*; \mathbf{x}, \by) = \hspace{-4pt} \sum_{1
 \end{frame}
 
 
-\begin{frame}{PhysGNN: Training Generative Neural Networks with Discrete Wasserstein Distance}
+\begin{frame}{Physics Generative Neural Network (PhysGNN)}
 	\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.0\textwidth]{figures/thesis/ill1}
@@ -1081,12 +1092,12 @@ $$	D(\mathbf{x}, \by) = W(\mathbf{p}^*; \mathbf{x}, \by) = \hspace{-4pt} \sum_{1
 	
 	\begin{itemize}
 		\item We consider a 2D Poisson's equation
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		\nabla \cdot (\kappa\nabla u) &= 2\pi^2\sin(\pi x) \sin(\pi y) & (x,y)\in (0,1)^2\\
 		u(x,y) &= 0 & (x,y)\in \partial (0,1)^2 
 	\end{aligned}
-\end{equation}
+\end{equation*}
 $$\kappa = |v|, \quad v \sim \mathcal{N}(1.0, 0.3^2)$$
 \item Observation:  $u(0.8,0.8)$
 \item $\sim$ 20,000 PDE solves for both MCMC and PhysGNN:
@@ -1114,15 +1125,18 @@ $$\kappa = |v|, \quad v \sim \mathcal{N}(1.0, 0.3^2)$$
 
 \section{Conclusion}
 
-
-\begin{frame}
-	\frametitle{Applications}
+\begin{frame}{Summary}
+	$$\min_{{f}} L_h(u_h) \quad \mathrm{s.t.}\; F_h({f}, u_h) = 0$$
 	
-
-\begin{figure}[hbt]
-	\centering
-	\includegraphics[width=0.9\textwidth]{figures/thesis/pub}
-\end{figure}
+	\begin{quote}
+		\textcolor{green}{\cmark} Develop algorithms and tools for solving inverse problems by \\ combining DNNs and numerical PDE solvers. 
+	\end{quote}
+	
+	
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.9\textwidth]{figures/thesis/outline.pdf}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -1133,7 +1147,7 @@ $$\kappa = |v|, \quad v \sim \mathcal{N}(1.0, 0.3^2)$$
 \end{frame}
 
 \begin{frame}
-PLACEHOLDER
+SURPRISE!
 \end{frame}
 
 
