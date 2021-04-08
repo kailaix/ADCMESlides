@@ -183,16 +183,7 @@
 		
 	}
 
-	\ifnumcomp{\value{section}}{=}{6}{
-	
-	\begin{frame}
-		\frametitle{Outline}
-		\tableofcontents[sectionstyle=show/shaded,hideothersubsections]
-	\end{frame}
-	
-}{
-	
-}
+
 }
 
 
@@ -966,7 +957,7 @@ $$    l(\theta) = \sum_{i,j} (\text{NN}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j
 \begin{frame}{Effect of Widths and Depths: conjecture}
 \begin{itemize}
 \item Implications for overparametrization: \textbf{the minimizer lies on a relatively higher dimensional manifold of the parameter space}.
-\item Conjecture: overparameterization makes the optimization easier. 
+\item Conjecture: overparameterization makes the optimization easier due to a larger chance of hitting the minimizer manifold.
 \end{itemize}
 
 	\begin{figure}[htbp]
@@ -1066,7 +1057,7 @@ Here $\theta = (\kappa, \tau, \sigma)$, $w = W_t$, and $u = r_t$.
 \begin{equation*}
 \begin{aligned}
 	L^G(\{\hat u_i\}; {\color{red}\eta}) =& \frac{1}{n}\sum_{i=1}^n D_{\xi}(\hat  u_i({\color{red}\eta})) \\
-	L^D(\{ u_i\}, \{\hat u_i\}; \xi) =& -\frac{1}{n}\sum_{i=1}^n D_{\xi}( u_i)
+	L^D(\{ u_i\}, \{\hat u_i\}; {\color{red}\xi}) =& -\frac{1}{n}\sum_{i=1}^n D_{\color{red}\xi}( u_i)
 \end{aligned}
 \end{equation*}
 \end{itemize}  
@@ -1176,7 +1167,7 @@ $$\kappa = |v|, \quad v \sim \mathcal{N}(1.0, 0.3^2)$$
 
 \section{Conclusion}
 
-\begin{frame}{Summary}
+\begin{frame}{Conclusion}
 	$$\min_{{f}} L_h(u_h) \quad \mathrm{s.t.}\; F_h({f}, u_h) = 0$$
 	
 	\begin{quote}
