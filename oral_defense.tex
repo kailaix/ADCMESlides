@@ -169,14 +169,32 @@
 %\renewcommand{\bf}{\mathbf{f}}
 %\newcommand{\bu}{\mathbf{u}}
 %\newcommand{\bv}[0]{\mathbf{v}}
-
+\usepackage{etoolbox}
 \AtBeginSection[]
 {
-   \begin{frame}
-       \frametitle{Outline}
-       \tableofcontents[currentsection]
-   \end{frame}
+	\ifnumcomp{\value{section}}{=}{1}{
+	
+	\begin{frame}
+		\frametitle{Outline}
+		\tableofcontents[sectionstyle=show/shaded,hideothersubsections]
+	\end{frame}
+
+	}{
+		
+	}
+
+	\ifnumcomp{\value{section}}{=}{6}{
+	
+	\begin{frame}
+		\frametitle{Outline}
+		\tableofcontents[sectionstyle=show/shaded,hideothersubsections]
+	\end{frame}
+	
+}{
+	
 }
+}
+
 
 %----------------------------------------------------------------------------------------
 %    TITLE PAGE
@@ -338,6 +356,16 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 
 
 \section{Software Implementation}
+
+\begin{frame}	
+	
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=1.0\textwidth]{figures/thesis/outline1}
+	\end{figure}
+\end{frame}
+
+
 \begin{frame}
 	\frametitle{Ecosystem for Inverse Modeling}
 	
@@ -454,6 +482,14 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 \end{frame}
 
 \section{First Order Physics Constrained Learning}
+
+\begin{frame}	
+	
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=1.0\textwidth]{figures/thesis/outline2}
+	\end{figure}
+\end{frame}
 
 \begin{frame}
 	
@@ -657,6 +693,17 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 
 \section{Second Order Physics Constrained Learning}
 
+
+
+\begin{frame}	
+	
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=1.0\textwidth]{figures/thesis/outline3}
+	\end{figure}
+\end{frame}
+
+
 \begin{frame}{Motivation}
 
 
@@ -848,7 +895,7 @@ $$\kappa(x,y) \approx \text{NN}_\theta(x, y)$$
 \end{frame}
 
 \begin{frame}{Effect of PDEs}
-	$$\text{NN}_\theta \rightarrow \text{PDE Solver}  \rightarrow \text{Loss Function}$$
+	$$\text{NN}_\theta \rightarrow \text{(PDE Solver)}  \rightarrow \text{Loss Function}$$
 	\vspace{-0.5cm}
 	\begin{itemize}
 \item Consider the loss function excluding the effects of PDEs 
@@ -940,14 +987,14 @@ $$    l(\theta) = \sum_{i,j} (\text{NN}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j
 
 \section{Generative Neural Networks for Stochastic Inverse Problems}
 
-\begin{frame}{Motivation}
-		\begin{figure}[htbp]
+\begin{frame}		
+	\begin{figure}[hbt]
 		\centering
-		\includegraphics[width=0.6\textwidth]{figures/thesis/outline4}
+		\includegraphics[width=1.0\textwidth]{figures/thesis/outline4}
 	\end{figure}
-\begin{center}
-	\rule{8cm}{0.4pt}
-\end{center}
+\end{frame}
+
+\begin{frame}{Motivation}
 
 		\begin{equation*}
 		\min_{\textcolor{red}{f}} L_h(u_h) \quad \mathrm{s.t.}\; F_h(\textcolor{red}{f}, u_h) = 0
