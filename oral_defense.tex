@@ -176,7 +176,7 @@
 	
 	\begin{frame}
 		\frametitle{Outline}
-		\tableofcontents[sectionstyle=show/shaded,hideothersubsections]
+		\tableofcontents[sectionstyle=show,hideothersubsections]
 	\end{frame}
 
 	}{
@@ -294,7 +294,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 
 \begin{frame}
 	\frametitle{Machine Learning for Computational Engineering}
-	$$\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\;\boxed{F_h(\textcolor{red}{NN_\theta}, u_h) = 0} \leftarrow \mbox{Solved numerically}$$
+	$$\min_{\theta} L_h(u_h) \quad \mathrm{s.t.}\;\boxed{F_h(\textcolor{red}{\text{N}_\theta}, u_h) = 0} \leftarrow \mbox{Solved numerically}$$
 	\vspace{-0.5cm}
 	\begin{enumerate}
 		\item Use a deep neural network to approximate the (high dimensional) unknown function;
@@ -377,6 +377,141 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\end{figure}
 \end{frame}
 
+
+\begin{frame}
+	\frametitle{Applications: Solid Mechanics}
+	\begin{itemize}
+\item Modeling constitutive relations with deep neural networks
+
+	\end{itemize}
+		\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figures/thesis/rnn.pdf}
+	\includegraphics[width=0.33\textwidth]{figures/thesis/plate_multiscale_stress_reference300.png}~
+	\includegraphics[width=0.33\textwidth]{figures/thesis/plate_multiscale_stress_test_nntrain2_piecewise_from3_test300.pdf}
+		\end{figure}
+			
+			\vspace{-0.2cm}
+		{
+			\tiny
+			
+			\begin{itemize}
+				\item[] Kailai Xu, Daniel Z. Huang, and Eric Darve. \textit{Learning constitutive relations using symmetric positive definite neural networks}. Journal of Computational Physics 428 (2021): 110072.
+				\item[] Daniel Z. Huang, Kailai Xu, Charbel Farhat, and Eric Darve. \textit{Learning constitutive relations from indirect observations using deep neural networks}. Journal of Computational Physics 416 (2020): 109491.
+			\end{itemize}
+			
+			
+			
+		}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Applications: Seismic Inversion}
+	\begin{itemize}
+		\item \textbf{ADSeismic}: AD $+$ Seismic Inversion
+		\item \textbf{NNFWI}: DNN $+$ FWI
+	\end{itemize}
+
+\begin{minipage}[t]{0.7\textwidth}
+		\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figures/adseimic.jpeg}
+	\end{figure}
+\end{minipage}~
+\begin{minipage}[t]{0.3\textwidth}
+	\begin{figure}[hbt]
+		\includegraphics[width=1.0\textwidth]{figures/thesis/marmousi_large_true}
+				\includegraphics[width=1.0\textwidth]{figures/thesis/FWI_marmousi_large}
+						\includegraphics[width=1.0\textwidth]{figures/thesis/NNFWI_marmousi_large}
+	\end{figure}
+\end{minipage}
+
+		
+	\vspace{-0.2cm}
+	{
+		\tiny
+		
+		\begin{itemize}
+			\item[] Weiqiang Zhu, Kailai Xu, Eric Darve, and Gregory C. Beroza. \textit{A general approach to seismic inversion with automatic differentiation}. Computers \& Geosciences (2021): 104751.
+			\item[] Weiqiang Zhu, Kailai Xu, Eric Darve, Biondo Biondi, and Gregory C. Beroza. \textit{Integrating Deep Neural Networks with Full-waveform Inversion: Reparametrization, Regularization, and Uncertainty Quantification}. Submitted.
+		\end{itemize}
+		
+		
+		
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Applications: Fluid Dynamics}
+	
+	\begin{figure}[hbt]
+		\centering 
+		\includegraphics[width=0.7\textwidth]{figures/advertisement.png}
+	\end{figure}
+
+	\vspace{-0.2cm}
+{
+	\tiny
+	
+	\begin{itemize}
+		\item[] Tiffany Fan, Kailai Xu, Jay Pathak, and Eric Darve. \textit{Solving Inverse Problems in Steady State Navier-Stokes Equations using Deep Neural Networks}. PGAI-AAAI (2020)
+	\end{itemize}
+}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Applications: Geo-mechanics}
+	
+	\begin{itemize}
+	\item Learning intrinsic fluid properties from indirect seismic data using automatic differentiation
+	\item Modeling viscoelasticity using deep neural networks 
+	\end{itemize}
+
+	\begin{figure}[hbt]
+	\centering 
+	\includegraphics[width=0.42\textwidth]{figures/thesis/diagram.png}~
+	\includegraphics[width=0.42\textwidth]{figures/visco2.png}
+\end{figure}
+	\vspace{-0.2cm}
+{
+	\tiny
+	
+	\begin{itemize}
+		\item[] Dongzhuo Li, Kailai Xu, Jerry M. Harris, and Eric Darve. \textit{Coupled Time‐Lapse Full‐Waveform Inversion for Subsurface Flow Problems Using Intrusive Automatic Differentiation}. Water Resources Research 56, no. 8 (2020): e2019WR027032.
+		
+		\item[] 	Kailai Xu and Eric Darve. \textit{Learning Viscoelasticity Models from Indirect Data using Deep Neural Networks}. Submitted.
+	\end{itemize}
+}
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Applications: Stochastic Processes}
+	\begin{itemize}
+		\item Approximating unknown distributions with deep neural networks in a stochastic process/differential equation. 
+		\item \textbf{Adversarial Inverse Modeling (AIM)}: adversarial training
+		\item \textbf{Physics Generative Neural Networks (PhysGNN)}: optimal transport
+	\end{itemize}
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.59\textwidth]{figures/thesis/ill1}~				\includegraphics[width=0.39\textwidth]{figures/thesis/ana}
+	\end{figure}
+	
+		\vspace{-0.2cm}
+	{
+		\tiny
+		
+		\begin{itemize}
+			\item[] 	Kailai Xu and Eric Darve. \textit{Solving Inverse Problems in Stochastic Models using Deep NeuralNetworks and Adversarial Training}. Submitted.
+			
+			\item[] 	Kailai Xu and Eric Darve. \textit{Learning Generative Neural Networks with Physics Knowledge}. Submitted.
+		\end{itemize}
+	}
+	
+\end{frame}
 
 \begin{frame}
 	\frametitle{Automatic Differentiation}
@@ -778,7 +913,7 @@ Calculate Hessians for coupled systems of PDEs and DNNs
 \end{frame}
 
 
-\begin{frame}{Second-order Physics Constrained Learning}
+\begin{frame}{Second Order Physics Constrained Learning}
 	\begin{itemize}
 \item Consider a composite function with a vector input $x$ and scalar output 
 \begin{equation}\label{equ:t1}
@@ -802,7 +937,7 @@ $$\boxed{\frac{\partial^2 v}{\partial x_i \partial x_j} = f_{,kr} G_{k,i} G_{r,j
 \end{frame}
 
 
-\begin{frame}{Second-order Physics Constrained Learning}
+\begin{frame}{Second Order Physics Constrained Learning}
 
 
 In the vector form,
@@ -821,7 +956,7 @@ $$v = \Phi_m(\Phi_{m-1}(\cdots (\Phi_1(z))))$$
 	\For{$k=m-1, m-2, \ldots, 1$}
 	\State Define $f:= \Phi_m (\Phi_{m-1} (\cdots (\Phi_{k+1}(\cdot))))$, $G:= \Phi_k$
 	\State Calculate the gradient (Jacobian) $J \gets \nabla G$
-	\State Extract $\bar G$ from the saved gradient back-propagation data. 
+	\State Extract $\bar G$ from the saved gradient back-propagation data
 	\State Calculate $Z = \nabla^2(\bar G^T G)$ \label{algo:second-order-algo-update-line}
 	\State Update $H \gets J^THJ + Z$
 	\EndFor
@@ -860,7 +995,7 @@ $$v = \Phi_m(\Phi_{m-1}(\cdots (\Phi_1(z))))$$
 
 \item We learn a DNN approximation to $\kappa$ using full-field observations of $u$
 
-$$\kappa(x,y) \approx \text{NN}_\theta(x, y)$$
+$$\kappa(x,y) \approx \text{N}_\theta(x, y)$$
 \end{itemize}
 \end{frame}
 
@@ -873,7 +1008,7 @@ $$\kappa(x,y) \approx \text{NN}_\theta(x, y)$$
 			\min_\theta\; L(\theta) = \sum_n\sum_{i,j} \left(\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} - F_{i,j}( u^{n+1}; \theta) -  f^{n+1}_{i,j}\right)^2 
 		\end{equation*}
 		
-		Here $F_{i,j}(u^{n+1}; \theta)$ is the 4-point finite difference approximation to the Laplacian $\nabla\cdot (\text{NN}_\theta \nabla u)$.
+		$F_{i,j}(u^{n+1}; \theta)$: the 4-point finite difference approximation to the Laplacian $\nabla\cdot (\text{N}_\theta \nabla u)$.
 		
 	
 		\end{itemize}
@@ -886,11 +1021,11 @@ $$\kappa(x,y) \approx \text{NN}_\theta(x, y)$$
 \end{frame}
 
 \begin{frame}{Effect of PDEs}
-	$$\text{NN}_\theta \rightarrow \text{(PDE Solver)}  \rightarrow \text{Loss Function}$$
+	$$\text{N}_\theta \rightarrow \text{(PDE Solver)}  \rightarrow \text{Loss Function}$$
 	\vspace{-0.5cm}
 	\begin{itemize}
 \item Consider the loss function excluding the effects of PDEs 
-$$    l(\theta) = \sum_{i,j} (\text{NN}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}, y_{i,j}))^2 $$
+$$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}, y_{i,j}))^2 $$
 
 \item Eigenvalue magnitudes of $\nabla^2 L(\theta)$ and $\nabla^2 l(\theta)$
 	\begin{figure}[htbp]
@@ -976,194 +1111,6 @@ $$    l(\theta) = \sum_{i,j} (\text{NN}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j
 	\end{itemize}
 \end{frame}
 
-\section{Generative Neural Networks for Stochastic Inverse Problems}
-
-\begin{frame}		
-	\begin{figure}[hbt]
-		\centering
-		\includegraphics[width=1.0\textwidth]{figures/thesis/outline4}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Motivation}
-
-		\begin{equation*}
-		\min_{\textcolor{red}{f}} L_h(u_h) \quad \mathrm{s.t.}\; F_h(\textcolor{red}{f}, u_h) = 0
-	\end{equation*}
-	\begin{itemize}
-\item What if $f$ is a random variable?
-\begin{itemize}
-	\item uncertainty quantification
-\end{itemize}
-\item What if $F_h$ is a stochastic model?
-\begin{itemize}
-	\item stochastic differential equations (SDE)
-\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Methodologies}
-		\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=1.0\textwidth]{figures/thesis/dist.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Modeling Stochasticity using Deep Neural Networks}
-
-
-\begin{itemize}
-\item We consider a map $F$
-$$F: (w, \theta) \mapsto u(\cdot, \cdot)$$
-\begin{itemize}
-\item $w$ is sampled from a \textbf{know} stochastic process (stochasticity intrinsic to the model).
-\item $\theta$ is a random variable of interest. 
-\item $u(x,t)$ is the output of the mapping, which depends on the location $x$ and time $t$. $u$ is also a random variable. 
- \end{itemize}
-\item Examples:
-
-\begin{itemize}
-\item CIR process (a short-term interest rate model)
-$$dr_t = \kappa(\tau-r_t)dt + \sqrt{r_t}\sigma dW_t$$
-Here $\theta = (\kappa, \tau, \sigma)$, $w = W_t$, and $u = r_t$.
-\end{itemize}
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Adversarial Inverse Modeling (AIM)}
-	\begin{itemize}
-\item Approximate the unknown distribution $\theta$ with a DNN $G_\eta$ (generator);
-\item A discriminator $D_\xi$ tries to distinguish between generated and observed samples.
-	\end{itemize}
-	\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figures/thesis/ana.pdf}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Adversarial Inverse Modeling}
-	\begin{itemize}
-\item Inspired by generative adversarial nets (GAN): alternatively minimizing discriminator and generator loss functions
-\begin{itemize}
-\item Kullback-Leibler (KL) GAN
-\begin{equation*}
-	\begin{aligned}
-		L^G(\{\hat u_i\}; {\color{red}\eta}) =&  \frac{1}{n}\sum_{i=1}^n \log\frac{ 1-D_{\xi}(\hat  u_i({\color{red}\eta}))}{D_{\xi}(\hat  u_i({\color{red}\eta}))} \\
-		L^D(\{ u_i\}, \{\hat u_i\}; {\color{red}\xi}) =& -\frac{1}{n}\sum_{i=1}^n \left( \log D_{\color{red}\xi}(\hat  u_i) + \log(1-D_{\color{red}\xi}( u_i)) \right)
-	\end{aligned} 
-\end{equation*}
-\item Wasserstein GAN
-\begin{equation*}
-\begin{aligned}
-	L^G(\{\hat u_i\}; {\color{red}\eta}) =& \frac{1}{n}\sum_{i=1}^n D_{\xi}(\hat  u_i({\color{red}\eta})) \\
-	L^D(\{ u_i\}, \{\hat u_i\}; {\color{red}\xi}) =& -\frac{1}{n}\sum_{i=1}^n D_{\color{red}\xi}( u_i)
-\end{aligned}
-\end{equation*}
-\end{itemize}  
-	\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Numerical Benchmarks}
-
-\begin{itemize}
-\item We consider a Poisson's equation 
-$$\begin{cases}
-	-\nabla \cdot (a(x)\nabla u(x)) = 1 & x\in(0,1)\\
-	u(0) = u(1) = 0 & \mbox{otherwise}
-\end{cases}$$
-$$a(x) = 1-0.9\exp\left( -\frac{(x-{\color{red}\mu})^2}{2{\sigma}^2} \right)$$
-\end{itemize}
-	\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1.0\textwidth]{figures/thesis/aim.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Optimal Transport}
-	\begin{itemize}
-\item Solve the transport matrix from a linear programming problem 
-\begin{minipage}{0.7\textwidth}
-	\begin{equation*}
-		\begin{aligned}
-			\min_{p_{ij}} &\; W(\mathbf{p}; \mathbf{x}, \by) = \sum_{i=1}^n \sum_{j=1}^m p_{ij} \underline{c}_{ij} \\
-			\mathrm{s.t.}\;\; & \sum_{j=1}^m p_{ij} = \frac{1}{n},\;\; \sum_{i=1}^n p_{ij} = \frac{1}{m},\;\; 0\leq p_{ij}\leq 1
-		\end{aligned}
-	\end{equation*}
-\end{minipage}~
-\begin{minipage}{0.3\textwidth}
-	\includegraphics[width=0.8\textwidth]{figures/thesis/optimal}
-\end{minipage}
-\item Discrete Wasserstein distance between two sets of samples:
-
-$$	D(\mathbf{x}, \by) = W(\mathbf{p}^*; \mathbf{x}, \by) = \hspace{-4pt} \sum_{1\leq i\leq n, 1\leq j\leq m} \hspace{-4pt} p^*_{ij} \|x_i-y_j\|_1$$
-
-
-	\end{itemize}
-\end{frame}
-
-
-\begin{frame}{AD for Discrete Wasserstein Distance}
-\begin{theorem}
-	Assume that $\mathbf{p}^*([\uc_{ij}])$ is the optimal solution to the linear programming problem given the cost matrix $[\uc_{ij}]$, then we have 
-	\begin{equation*}
-		\frac{\partial W(\mathbf{p}^*([\uc_{ij}]))}{\partial \uc_{ij}} = p^*_{ij}
-	\end{equation*}
-\end{theorem}
-
-\begin{itemize}
-\item We have a ``\textcolor{red}{handpicked discriminator}''. 
-\item Numerical implementation is very similar to OptNet (Amos, Brandon, and J. Zico Kolter, PMLR 2017):
-\begin{itemize}
-\item The forward computation constitutes solving an optimization problem. 
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Physics Generative Neural Network (PhysGNN)}
-	\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1.0\textwidth]{figures/thesis/ill1}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Numerical Benchmarks}
-	
-	\begin{itemize}
-		\item We consider a 2D Poisson's equation
-\begin{equation*}
-	\begin{aligned}
-		\nabla \cdot (\kappa\nabla u) &= 2\pi^2\sin(\pi x) \sin(\pi y) & (x,y)\in (0,1)^2\\
-		u(x,y) &= 0 & (x,y)\in \partial (0,1)^2 
-	\end{aligned}
-\end{equation*}
-$$\kappa = |v|, \quad v \sim \mathcal{N}(1.0, 0.3^2)$$
-\item Observation:  $u(0.8,0.8)$
-\item $\sim$ 20,000 PDE solves for both MCMC and PhysGNN:
-	\end{itemize}
-
-
-\begin{figure}[hbt]
-	\centering
-    \includegraphics[width=0.8\textwidth]{figures/thesis/compare_mcmc_data.pdf}
-\end{figure}
-
-\end{frame}
-
-\begin{frame}{Summary}
-	\begin{itemize}
-		\item Generative neural networks are used to approximate unknown distributions in a stochastic inverse problem. 
-		\item Training generative neural networks
-		\begin{itemize}
-			\item Adversarial inverse modeling (AIM): solving a min-max optimization problem involving  generator and discriminator nets
-			\item Physics Generative Neural Network (PhysGNN): minimizing a discrete Wasserstein distance
-		\end{itemize}
-	\end{itemize}
-	
-\end{frame}
 
 \section{Conclusion}
 
