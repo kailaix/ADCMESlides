@@ -1064,7 +1064,7 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 \item The ratio of zero eigenvalues \textbf{increases} as
 
 \begin{itemize}
-\item the number of hidden layers increase for a fixed number (20) of neurons per layer
+\item the number of hidden layers increase for a fixed number (20) of neurons per layer (unit: \%)
 \begin{center}
 \begin{tabular}{@{}llll@{}}
 	\toprule
@@ -1075,7 +1075,7 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 \end{tabular}
 \end{center}
 
-\item the number of neurons per layer increases for a fixed number (3) of hidden layers
+\item the number of neurons per layer increases for a fixed number (3) of hidden layers (unit: \%)
 \begin{center}
 	\begin{tabular}{@{}lllll@{}}
 		\toprule
@@ -1091,7 +1091,7 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 \end{frame}
 
 
-\begin{frame}{Effect of Widths and Depths: conjecture}
+\begin{frame}{Effect of Widths and Depths: Conjecture}
 \begin{itemize}
 \item Implications for overparametrization: \textbf{the minimizer lies on a relatively higher dimensional manifold of the parameter space}.
 \item Conjecture: overparameterization makes the optimization easier due to a larger chance of hitting the minimizer manifold.
@@ -1141,10 +1141,10 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 
 \begin{frame}
 \frametitle{Acknowledgement}
-\vspace{-1.5cm}
+
 \begin{figure}[hbt]
 	\centering
-	\includegraphics[width=0.8\textwidth,angle=270,origin=c]{figures/thesis/family.png}
+	\includegraphics[width=1.0\textwidth]{figures/thesis/family.png}
 \end{figure}
 
 \end{frame}
@@ -1185,9 +1185,9 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 		\begin{tabular}{@{}p{2cm}|p{2.5cm}|p{2cm}|p{3cm}@{}}
 			\toprule
 			& TensorFlow 1.x                                                                                             & PyTorch              & JAX                                                                                                                                                                                \\ \midrule
-			Computational Graph & Static and Explicit                                                                                        & Dynamic and Explicit & Dynamic and Implicit                                                                                                                                                               \\ \hline
+			Computational graph & static and Explicit                                                                                        & dynamic and explicit & dynamic and implicit                                                                                                                                                               \\ \hline
 			Programming         & declarative                                                                                                & imperative           & imperative                                                                                                                                                                         \\\hline
-			Focus               & Graph Optimization, AD                                                                                     & AD                   & AD                                                                                                                                                                                 \\\hline
+			Focus               & graph optimization, AD                                                                                     & AD                   & AD                                                                                                                                                                                 \\\hline
 			Computing           & CPU/GPU/TPU                                                                                                & CPU/GPU, TPU(-)      & CPU/GPU/TPU                                                                                                                                                                        \\\hline
 			Highlight           & \begin{tabular}[c]{@{}p{2.5cm}@{}}$\bullet$ graph optimizations and manipulations\\$\bullet$ optimized tensor libraries\end{tabular} & intuitive APIs       & \begin{tabular}[c]{@{}p{3cm}@{}}$\bullet$ just-in-time compilation of Python functions into XLA-optimized kernels\\$\bullet$ arbitrary composition of pure functions\\$\bullet$ high order derivatives\end{tabular} \\ \bottomrule
 		\end{tabular}
@@ -1211,7 +1211,7 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 		\toprule
 		& Static Graph                                                                                                                            & Dynamic Graph                                                                                                                             \\ \midrule
 		Pros & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ graph optimizations, simplifications and rewriting;\\$\bullet$  easy to reason about and analyze the graph\end{tabular} &$\bullet$  intuitive: run to define.                                                                                                                  \\ \hline
-		Cons & compiled-language-like: define to run.                                                                                                   & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ difficult to reason about and optimize;\\ $\bullet$ encourage trial and error instead of computations itself.\end{tabular} \\ \bottomrule
+		Cons & $\bullet$ compiled-language-like: define to run.                                                                                                   & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ difficult to reason about and optimize;\\ $\bullet$ encourage trial and error instead of computations itself.\end{tabular} \\ \bottomrule
 	\end{tabular}
 \end{table}
 \end{frame}
