@@ -396,8 +396,8 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 			\tiny
 			
 			\begin{itemize}
-				\item[] Kailai Xu, Daniel Z. Huang, and Eric Darve. \textit{Learning constitutive relations using symmetric positive definite neural networks}. Journal of Computational Physics 428 (2021): 110072.
-				\item[] Daniel Z. Huang, Kailai Xu, Charbel Farhat, and Eric Darve. \textit{Learning constitutive relations from indirect observations using deep neural networks}. Journal of Computational Physics 416 (2020): 109491.
+				\item[] Kailai Xu*, Daniel Z. Huang*, and Eric Darve. \textit{Learning constitutive relations using symmetric positive definite neural networks}. Journal of Computational Physics 428 (2021): 110072.
+				\item[] Daniel Z. Huang*, Kailai Xu*, Charbel Farhat, and Eric Darve. \textit{Learning constitutive relations from indirect observations using deep neural networks}. Journal of Computational Physics 416 (2020): 109491.
 			\end{itemize}
 			
 			
@@ -432,8 +432,8 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 		\tiny
 		
 		\begin{itemize}
-			\item[] Weiqiang Zhu, Kailai Xu, Eric Darve, and Gregory C. Beroza. \textit{A general approach to seismic inversion with automatic differentiation}. Computers \& Geosciences (2021): 104751.
-			\item[] Weiqiang Zhu, Kailai Xu, Eric Darve, Biondo Biondi, and Gregory C. Beroza. \textit{Integrating Deep Neural Networks with Full-waveform Inversion: Reparametrization, Regularization, and Uncertainty Quantification}. Submitted.
+			\item[] Weiqiang Zhu*, Kailai Xu*, Eric Darve, and Gregory C. Beroza. \textit{A general approach to seismic inversion with automatic differentiation}. Computers \& Geosciences (2021): 104751.
+			\item[] Weiqiang Zhu*, Kailai Xu*, Eric Darve, Biondo Biondi, and Gregory C. Beroza. \textit{Integrating Deep Neural Networks with Full-waveform Inversion: Reparametrization, Regularization, and Uncertainty Quantification}. Submitted.
 		\end{itemize}
 		
 		
@@ -478,7 +478,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\tiny
 	
 	\begin{itemize}
-		\item[] Dongzhuo Li, Kailai Xu, Jerry M. Harris, and Eric Darve. \textit{Coupled Time‐Lapse Full‐Waveform Inversion for Subsurface Flow Problems Using Intrusive Automatic Differentiation}. Water Resources Research 56, no. 8 (2020): e2019WR027032.
+		\item[] Dongzhuo Li*, Kailai Xu*, Jerry M. Harris, and Eric Darve. \textit{Coupled Time‐Lapse Full‐Waveform Inversion for Subsurface Flow Problems Using Intrusive Automatic Differentiation}. Water Resources Research 56, no. 8 (2020): e2019WR027032.
 		
 		\item[] Kailai Xu, Alexandre M. Tartakovsky, Jeff Burghardt, and Eric Darve. \textit{Learning Viscoelasticity Models from Indirect Data using Deep Neural Networks}. Submitted.
 	\end{itemize}
@@ -492,8 +492,10 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 	\frametitle{Applications: Stochastic Processes}
 	\begin{itemize}
 		\item Approximating unknown distributions with deep neural networks in a stochastic process/differential equation. 
-		\item \textbf{Adversarial Inverse Modeling (AIM)}: adversarial training
-		\item \textbf{Physics Generative Neural Networks (PhysGNN)}: optimal transport
+		\begin{itemize}
+			\item \textbf{Adversarial Inverse Modeling (AIM)}: adversarial training
+			\item \textbf{Physics Generative Neural Networks (PhysGNN)}: optimal transport
+		\end{itemize}
 	\end{itemize}
 	\begin{figure}[hbt]
 		\centering
@@ -507,7 +509,7 @@ The candidate solution space is \textcolor{red}{infinite dimensional}.
 		\begin{itemize}
 			\item[] 	Kailai Xu and Eric Darve. \textit{Solving Inverse Problems in Stochastic Models using Deep NeuralNetworks and Adversarial Training}. Submitted.
 			
-			\item[] 	Kailai Xu and Eric Darve. \textit{Learning Generative Neural Networks with Physics Knowledge}. Submitted.
+			\item[] 	Kailai Xu, Weiqiang Zhu, and Eric Darve. \textit{Learning Generative Neural Networks with Physics Knowledge}. Submitted.
 		\end{itemize}
 	}
 	
@@ -1135,10 +1137,84 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 	\end{figure}
 \end{frame}
 
+
+
 \begin{frame}
-SURPRISE!
+\frametitle{Acknowledgement}
+\vspace{-1.5cm}
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.8\textwidth,angle=270,origin=c]{figures/thesis/family.png}
+\end{figure}
+
 \end{frame}
 
+\begin{frame}
+	\LARGE
+	\begin{center}
+		Supporting Materials
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Limitations and Future Work}
+	\begin{itemize}
+		\item Computational cost
+		\begin{itemize}
+			\item A PDE needs to be solved per inner iteration in the optimization process
+			\item Calculating Hessians are very expensive: exploit the Hessian structure to accelerate computations
+		\end{itemize}
+		\item Convergence and accuracy of DNNs
+		\item Ill-posed inverse problems
+		\begin{itemize}
+			\item Regularization 
+			\item Bayesian approach
+		\end{itemize}
+		\item Robustness to noise 
+		\item Theoretical investigations
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Major AD Frameworks}
+	
+	% Please add the following required packages to your document preamble:
+	% \usepackage{booktabs}
+	\footnotesize
+	\begin{table}[]
+		\begin{tabular}{@{}p{2cm}|p{2.5cm}|p{2cm}|p{3cm}@{}}
+			\toprule
+			& TensorFlow 1.x                                                                                             & PyTorch              & JAX                                                                                                                                                                                \\ \midrule
+			Computational Graph & Static and Explicit                                                                                        & Dynamic and Explicit & Dynamic and Implicit                                                                                                                                                               \\ \hline
+			Programming         & declarative                                                                                                & imperative           & imperative                                                                                                                                                                         \\\hline
+			Focus               & Graph Optimization, AD                                                                                     & AD                   & AD                                                                                                                                                                                 \\\hline
+			Computing           & CPU/GPU/TPU                                                                                                & CPU/GPU, TPU(-)      & CPU/GPU/TPU                                                                                                                                                                        \\\hline
+			Highlight           & \begin{tabular}[c]{@{}p{2.5cm}@{}}$\bullet$ graph optimizations and manipulations\\$\bullet$ optimized tensor libraries\end{tabular} & intuitive APIs       & \begin{tabular}[c]{@{}p{3cm}@{}}$\bullet$ just-in-time compilation of Python functions into XLA-optimized kernels\\$\bullet$ arbitrary composition of pure functions\\$\bullet$ high order derivatives\end{tabular} \\ \bottomrule
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{AD Frameworks}
+	\begin{figure}[hbt]
+		\centering
+		\includegraphics[width=0.7\textwidth,angle=270,origin=c]{figures/thesis/adframeworks}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Static Graph versus Dynamic Graph}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+	\begin{tabular}{@{}p{1cm}|p{5cm}|p{5cm}@{}}
+		\toprule
+		& Static Graph                                                                                                                            & Dynamic Graph                                                                                                                             \\ \midrule
+		Pros & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ graph optimizations, simplifications and rewriting;\\$\bullet$  easy to reason about and analyze the graph\end{tabular} &$\bullet$  intuitive: run to define.                                                                                                                  \\ \hline
+		Cons & compiled-language-like: define to run.                                                                                                   & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ difficult to reason about and optimize;\\ $\bullet$ encourage trial and error instead of computations itself.\end{tabular} \\ \bottomrule
+	\end{tabular}
+\end{table}
+\end{frame}
 
 %}
 %\usebackgroundtemplate{}
