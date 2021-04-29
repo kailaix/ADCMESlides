@@ -1041,7 +1041,7 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 \begin{itemize}
 \item Most of the eigenvalue directions at the local landscape of loss functions are ``flat'' $\Rightarrow$ ``effective degrees of freedom (DOFs)''. 
 
-\item Physical constraints (PDEs) further cannibalize effective DOFs:
+\item Physical constraints (PDEs) further reduce effective DOFs:
 
 \
 
@@ -1138,6 +1138,7 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 \end{frame}
 
 
+\iffalse
 
 \begin{frame}
 \frametitle{Acknowledgement}
@@ -1147,7 +1148,11 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 	\includegraphics[width=1.0\textwidth]{figures/thesis/family.png}
 \end{figure}
 
+
+
 \end{frame}
+\fi 
+
 
 \begin{frame}
 	\LARGE
@@ -1185,11 +1190,11 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 		\begin{tabular}{@{}p{2cm}|p{2.5cm}|p{2cm}|p{3cm}@{}}
 			\toprule
 			& TensorFlow 1.x                                                                                             & PyTorch              & JAX                                                                                                                                                                                \\ \midrule
-			Computational graph & static and Explicit                                                                                        & dynamic and explicit & dynamic and implicit                                                                                                                                                               \\ \hline
+			Computational graph & static and explicit                                                                                        & dynamic and explicit & dynamic and implicit                                                                                                                                                               \\ \hline
 			Programming         & declarative                                                                                                & imperative           & imperative                                                                                                                                                                         \\\hline
 			Focus               & graph optimization, AD                                                                                     & AD                   & AD                                                                                                                                                                                 \\\hline
 			Computing           & CPU/GPU/TPU                                                                                                & CPU/GPU, TPU(-)      & CPU/GPU/TPU                                                                                                                                                                        \\\hline
-			Highlight           & \begin{tabular}[c]{@{}p{2.5cm}@{}}$\bullet$ graph optimizations and manipulations\\$\bullet$ optimized tensor libraries\end{tabular} & intuitive APIs       & \begin{tabular}[c]{@{}p{3cm}@{}}$\bullet$ just-in-time compilation of Python functions into XLA-optimized kernels\\$\bullet$ arbitrary composition of pure functions\\$\bullet$ high order derivatives\end{tabular} \\ \bottomrule
+			Highlights           & \begin{tabular}[c]{@{}p{2.5cm}@{}}$\bullet$ graph optimizations and manipulations\\$\bullet$ optimized tensor libraries\end{tabular} & intuitive APIs       & \begin{tabular}[c]{@{}p{3cm}@{}}$\bullet$ just-in-time compilation from Python functions to XLA-optimized kernels\\$\bullet$ arbitrary composition of pure functions\\$\bullet$ high order derivatives\end{tabular} \\ \bottomrule
 		\end{tabular}
 	\end{table}
 \end{frame}
@@ -1210,7 +1215,7 @@ $$    l(\theta) = \sum_{i,j} (\text{N}_\theta(x_{i,j}, y_{i,j}) - \kappa(x_{i,j}
 	\begin{tabular}{@{}p{1cm}|p{5cm}|p{5cm}@{}}
 		\toprule
 		& Static Graph                                                                                                                            & Dynamic Graph                                                                                                                             \\ \midrule
-		Pros & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ graph optimizations, simplifications and rewriting;\\$\bullet$  easy to reason about and analyze the graph\end{tabular} &$\bullet$  intuitive: run to define.                                                                                                                  \\ \hline
+		Pros & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ graph optimizations, rewriting, and simplifications;\\$\bullet$  easy to reason about and analyze\end{tabular} &$\bullet$  intuitive: run to define.                                                                                                                  \\ \hline
 		Cons & $\bullet$ compiled-language-like: define to run.                                                                                                   & \begin{tabular}[c]{@{}p{5cm}@{}}$\bullet$ difficult to reason about and optimize;\\ $\bullet$ encourage trial and error instead of computations itself.\end{tabular} \\ \bottomrule
 	\end{tabular}
 \end{table}
